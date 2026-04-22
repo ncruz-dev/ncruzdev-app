@@ -5,17 +5,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DragonBallApiResponse {
+public class DragonBallCharactersResponse {
 
-    private Integer id;
-    private String name;
-    private String maxKi;
-    private String race;
-    private String description;
-    private String image;
+    private List<DragonBallApiResponse> items;
 
 }
+

@@ -9,10 +9,11 @@ import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @ApplicationScoped
-class DragonBallApiServiceImpl implements GreetingRepository {
+public class DragonBallApiServiceImpl implements GreetingRepository {
 
     private String baseUrl = "https://dragonball-api.com";
     private RestClientConfig restClientConfig;
@@ -39,6 +40,23 @@ class DragonBallApiServiceImpl implements GreetingRepository {
                 .maxKi(response.getMaxKi())
                 .race(response.getRace())
                 .description(response.getDescription())
+                .image(response.getImage())
                 .build();
     }
+
+    @Override
+    public List<GreetingResponse> getAllCharacters() {
+        return restClientConfig.getCharacters().getItems().stream()
+                .map(response -> GreetingResponse.builder()
+                        .id(response.getId())
+                        .name(response.getName())
+                        .maxKi(response.getMaxKi())
+                        .race(response.getRace())
+                        .description(response.getDescription())
+                        .image(response.getImage())
+                        .build())
+                .toList();
+    }
+
+
 }

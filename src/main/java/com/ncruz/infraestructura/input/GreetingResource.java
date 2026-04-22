@@ -28,4 +28,10 @@ public class GreetingResource {
         return Response.ok(greetingService.getGreetingFromCharacters(id)).build();
     }
 
+    @GET
+    @Path("/all")
+    public Response getAllCharacters(){
+        return Response.ok(greetingService.getAllCharacters()).build();
+    }
+
 }

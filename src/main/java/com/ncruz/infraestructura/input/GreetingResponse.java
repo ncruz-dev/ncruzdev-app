@@ -16,6 +16,6 @@ public class GreetingResponse {
     private String maxKi;
     private String race;
     private String description;
-
+    private String image;
 
 }

@@ -11,4 +11,8 @@ public interface RestClientConfig {
     @Path("/api/characters/{id}")
     DragonBallApiResponse getCharacter(@PathParam("id") Long id);
 
+    @GET
+    @Path("/api/characters")
+    DragonBallCharactersResponse getCharacters();
+
 }
